@@ -1,6 +1,6 @@
 import java.sql.*;
 
-public class BTDatabase {
+public class SQLiteJDBCDriverConnection {
     //Connect to a single database
     public static void connect() {
         Connection conn = null;
@@ -93,12 +93,12 @@ public class BTDatabase {
     /*
         MAIN
      */
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         //createNewDatabase("test.db");
         createNewTable("test.db");
         System.out.println("Print Tables");
         printAllTables("test.db");
         System.out.println("Drop Tables");
         dropAllTables("test.db");
-    }
+    }*/
 }

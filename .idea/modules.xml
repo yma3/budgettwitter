@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BudgetTwitter.iml" filepath="$PROJECT_DIR$/BudgetTwitter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/budgettwitter.iml" filepath="$PROJECT_DIR$/budgettwitter.iml" />
     </modules>
   </component>
 </project>
