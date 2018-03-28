@@ -70,7 +70,7 @@ public class SQLiteJDBCDriverConnection {
 
     public void createNewPostTable(String fileName) {
         String url = "jdbc:sqlite:C:/sqlite/db/" + fileName;
-        String sql = "CREATE TABLE IF NOT EXISTS postTable (\n" + "username text PRIMARY KEY,\n" + "postData text,\n" + "postTime int,\n" + "likeNum int\n" + ");";
+        String sql = "CREATE TABLE IF NOT EXISTS postTable (\n" + "postID int PRIMARY KEY,\n" + "username text,\n" + "postData text,\n" + "postTime int,\n" + "likeNum int\n" + ");";
 
         try(Connection conn = DriverManager.getConnection(url); Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
@@ -168,15 +168,40 @@ public class SQLiteJDBCDriverConnection {
         }
     }
 
-    public void insertPostTable(String username, String postData, LocalDate postTime, Integer likeNum) {
+    public void deleteFromUserTable(String username) {
         String url = "jdbc:sqlite:C:/sqlite/db/test.db";
-        String sql = "INSERT INTO postTable(username, postData, postTime, likeNum) VALUES(?,?,?,?)";
-
+        String sql = "DELETE FROM userTable WHERE username = ?";
         try(Connection conn = DriverManager.getConnection(url); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, username);
-            pstmt.setString(2, postData);
-            pstmt.setObject(3, postTime);
-            pstmt.setInt(4, likeNum);
+            pstmt.executeUpdate();
+            System.out.println("username: " + username + " deleted from userTable.");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void deleteFromPostTable(int postID) {
+        String url = "jdbc:sqlite:C:/sqlite/db/test.db";
+        String sql = "DELETE FROM postTable WHERE postID = ?";
+        try(Connection conn = DriverManager.getConnection(url); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, postID);
+            pstmt.executeUpdate();
+            System.out.println("postID: " + postID + " deleted from postTable.");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void insertPostTable(Integer postID, String username, String postData, LocalDate postTime, Integer likeNum) {
+        String url = "jdbc:sqlite:C:/sqlite/db/test.db";
+        String sql = "INSERT INTO postTable(postID, username, postData, postTime, likeNum) VALUES(?,?,?,?,?)";
+
+        try(Connection conn = DriverManager.getConnection(url); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, postID);
+            pstmt.setString(2, username);
+            pstmt.setString(3, postData);
+            pstmt.setObject(4, postTime);
+            pstmt.setInt(5, likeNum);
             pstmt.executeUpdate();
             System.out.println("Inserted into postTable");
 
