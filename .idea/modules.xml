@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/budgettwitter.iml" filepath="$PROJECT_DIR$/budgettwitter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/budgettwittermvn/budgettwittermvn.iml" filepath="$PROJECT_DIR$/budgettwittermvn/budgettwittermvn.iml" />
     </modules>
   </component>
 </project>

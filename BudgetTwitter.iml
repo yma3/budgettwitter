@@ -16,5 +16,16 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Documents/lib/jaxrs-ri" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$USER_HOME$/Documents/lib/jaxrs-ri" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" exported="" name="JAX-RS" level="project" />
   </component>
 </module>
