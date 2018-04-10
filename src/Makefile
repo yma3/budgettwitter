@@ -1,6 +1,6 @@
 server: backend/*.java
 	git pull origin master
-	javac -classpath .:../lib/* backend/Main.java backend/SQLiteJDBCDriverConnection.java backend/*.java
+	javac -classpath .:../lib/* backend/Main.java backend/SQLiteJDBCDriverConnection.java
 	java -cp "../lib/*:./" backend.Main
 
 clean: 
