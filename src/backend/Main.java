@@ -5,8 +5,8 @@ public class Main {
     public static void main(String args[]) {
         SQLiteJDBCDriverConnection dbconn = new SQLiteJDBCDriverConnection();
 
-        dbconn.deleteDatabase("C:/sqlite/db/test.db");
-        String fileName = "test.db";
+        dbconn.deleteDatabase("~/twitter.db");
+        String fileName = "twitter.db";
 
         dbconn.createNewDatabase(fileName);
 

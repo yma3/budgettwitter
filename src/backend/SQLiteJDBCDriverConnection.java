@@ -12,7 +12,7 @@ public class SQLiteJDBCDriverConnection {
         Connection conn = null;
         try {
             // db parameters
-            String url = "jdbc:sqlite:C:/sqlite/db/test.db";
+            String url = "jdbc:sqlite:~/twitter.db";
             // create a connection to the database
             conn = DriverManager.getConnection(url);
 
@@ -146,7 +146,7 @@ public class SQLiteJDBCDriverConnection {
     }
 
     public void updateUserTable(String username, String first_name, String last_name, String email, LocalDate birthday) {
-        String url = "jdbc:sqlite:C:/sqlite/db/test.db";
+        String url = "jdbc:sqlite:~/twitter.db";
         String sql = "UPDATE userTable SET first_name = ? , " + "last_name = ? , " + "email = ? ," + "birthday = ?" + "WHERE username = ?";
 
         try(Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -164,7 +164,7 @@ public class SQLiteJDBCDriverConnection {
     }
 
     public void deleteFromUserTable(String username) {
-        String url = "jdbc:sqlite:C:/sqlite/db/test.db";
+        String url = "jdbc:sqlite:~/twitter.db";
         String sql = "DELETE FROM userTable WHERE username = ?";
         try(Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, username);
@@ -176,7 +176,7 @@ public class SQLiteJDBCDriverConnection {
     }
 
     public void deleteFromPostTable(int postID) {
-        String url = "jdbc:sqlite:C:/sqlite/db/test.db";
+        String url = "jdbc:sqlite:~/twitter.db";
         String sql = "DELETE FROM postTable WHERE postID = ?";
         try(Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, postID);
@@ -188,7 +188,7 @@ public class SQLiteJDBCDriverConnection {
     }
 
     public void insertPostTable(Integer postID, String username, String postData, LocalDate postTime, Integer likeNum) {
-        String url = "jdbc:sqlite:C:/sqlite/db/test.db";
+        String url = "jdbc:sqlite:~/twitter.db";
         String sql = "INSERT INTO postTable(postID, username, postData, postTime, likeNum) VALUES(?,?,?,?,?)";
 
         try(Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
