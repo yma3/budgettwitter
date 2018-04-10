@@ -1,4 +1,4 @@
-package f2018.ece366.budgettwitter;
+package backend;
 
 import javax.swing.plaf.nimbus.State;
 import java.sql.*;
@@ -9,6 +9,13 @@ import java.io.*;
 public class SQLiteJDBCDriverConnection {
     //Connect to a single database
     public Connection connect() {
+    	try {
+    	    Class.forName("org.sqlite.JDBC");
+    	} catch (Exception ex) {
+    	    ex.printStackTrace();
+    	    System.err.println("Error: can't find drivers!");
+    	}
+
         Connection conn = null;
         try {
             // db parameters

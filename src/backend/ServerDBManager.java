@@ -1,4 +1,4 @@
-package f2018.ece366.budgettwitter;
+package backend;
 
 public class ServerDBManager {
 
