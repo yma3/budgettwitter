@@ -19,7 +19,7 @@ public class SQLiteJDBCDriverConnection {
         Connection conn = null;
         try {
             // db parameters
-            String url = "jdbc:sqlite:~/twitter.db";
+            String url = "jdbc:sqlite:/home/cooper/twitter.db";
             // create a connection to the database
             conn = DriverManager.getConnection(url);
 
@@ -39,7 +39,7 @@ public class SQLiteJDBCDriverConnection {
     	    ex.printStackTrace();
     	    System.err.println("Error: can't find drivers!");
     	}
-        String url = "jdbc:sqlite:~/" + fileName;
+        String url = "jdbc:sqlite:/home/cooper/" + fileName;
 
         try(Connection conn = this.connect()) {
             if(conn != null) {
@@ -74,7 +74,7 @@ public class SQLiteJDBCDriverConnection {
     	    ex.printStackTrace();
     	    System.err.println("Error: can't find drivers!");
     	}
-        String url = "jdbc:sqlite:~/" + fileName;
+        String url = "jdbc:sqlite:/home/cooper/" + fileName;
         String sql = "CREATE TABLE IF NOT EXISTS userTable (\n" + "username text PRIMARY KEY,\n" + "password text,\n"+"first_name text,\n" + "last_name text,\n" + "email text,\n" + "birthday int,\n" + "FollowerNum int\n"+");";
         try(Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
             //System.out.println("CREATING TABLE WITH FOLLOWING INPUT:");
@@ -94,7 +94,7 @@ public class SQLiteJDBCDriverConnection {
     	    ex.printStackTrace();
     	    System.err.println("Error: can't find drivers!");
     	}
-        String url = "jdbc:sqlite:~/" + fileName;
+        String url = "jdbc:sqlite:/home/cooper/" + fileName;
         String sql = "CREATE TABLE IF NOT EXISTS postTable (\n" + "postID int PRIMARY KEY,\n" + "username text,\n" + "postData text,\n" + "postTime int,\n" + "likeNum int\n" + ");";
 
         try(Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
@@ -113,7 +113,7 @@ public class SQLiteJDBCDriverConnection {
     	    ex.printStackTrace();
     	    System.err.println("Error: can't find drivers!");
     	}
-        String url = "jdbc:sqlite:~/" + fileName;
+        String url = "jdbc:sqlite:/home/cooper/" + fileName;
         String sql = "DROP TABLE IF EXISTS " + tableName;
         try(Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
             stmt.execute(sql);
@@ -131,7 +131,7 @@ public class SQLiteJDBCDriverConnection {
     	    ex.printStackTrace();
     	    System.err.println("Error: can't find drivers!");
     	}
-        String url = "jdbc:sqlite:~/" + fileName;
+        String url = "jdbc:sqlite:/home/cooper/" + fileName;
         try(Connection conn = this.connect();) {
             DatabaseMetaData m = conn.getMetaData();
             ResultSet rs = m.getTables(conn.getCatalog(), null, "%", null);
@@ -154,7 +154,7 @@ public class SQLiteJDBCDriverConnection {
     	    System.err.println("Error: can't find drivers!");
     	}
         List<String> tableNames = new ArrayList<>();
-        String url = "jdbc:sqlite:~/" + fileName;
+        String url = "jdbc:sqlite:/home/cooper/" + fileName;
         String sql = "DROP TABLE IF EXISTS ";
         try(Connection conn = this.connect(); Statement stmt = conn.createStatement()) {
             DatabaseMetaData meta = conn.getMetaData();
@@ -182,7 +182,7 @@ public class SQLiteJDBCDriverConnection {
     	    ex.printStackTrace();
     	    System.err.println("Error: can't find drivers!");
     	}
-        String url = "jdbc:sqlite:~/" + fileName;
+        String url = "jdbc:sqlite:/home/cooper/" + fileName;
         String sql = "INSERT INTO userTable(username, password, first_name, last_name, email, birthday, FollowerNum) VALUES(?,?,?,?,?,?,?)";
 
         try(Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -207,7 +207,7 @@ public class SQLiteJDBCDriverConnection {
     	    ex.printStackTrace();
     	    System.err.println("Error: can't find drivers!");
     	}
-        String url = "jdbc:sqlite:~/twitter.db";
+        String url = "jdbc:sqlite:/home/cooper/twitter.db";
         String sql = "UPDATE userTable SET first_name = ? , " + "last_name = ? , " + "email = ? ," + "birthday = ?" + "WHERE username = ?";
 
         try(Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -231,7 +231,7 @@ public class SQLiteJDBCDriverConnection {
     	    ex.printStackTrace();
     	    System.err.println("Error: can't find drivers!");
     	}
-        String url = "jdbc:sqlite:~/twitter.db";
+        String url = "jdbc:sqlite:/home/cooper/twitter.db";
         String sql = "DELETE FROM userTable WHERE username = ?";
         try(Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, username);
@@ -249,7 +249,7 @@ public class SQLiteJDBCDriverConnection {
     	    ex.printStackTrace();
     	    System.err.println("Error: can't find drivers!");
     	}
-        String url = "jdbc:sqlite:~/twitter.db";
+        String url = "jdbc:sqlite:/home/cooper/twitter.db";
         String sql = "DELETE FROM postTable WHERE postID = ?";
         try(Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, postID);
@@ -267,7 +267,7 @@ public class SQLiteJDBCDriverConnection {
     	    ex.printStackTrace();
     	    System.err.println("Error: can't find drivers!");
     	}
-        String url = "jdbc:sqlite:~/twitter.db";
+        String url = "jdbc:sqlite:/home/cooper/twitter.db";
         String sql = "INSERT INTO postTable(postID, username, postData, postTime, likeNum) VALUES(?,?,?,?,?)";
 
         try(Connection conn = this.connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
